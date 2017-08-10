@@ -16,7 +16,6 @@
 @property NSString *location;
 @property NSString *catagory;
 
-- (instancetype)initWithCatagory: (NSString*) catagory andImage:(UIImage*)image;
-
+- (instancetype)initWithCatagory:(NSString *)catagory andImage:(UIImage *)image andLocation:(NSString*) location;
 
 @end

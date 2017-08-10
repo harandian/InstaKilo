@@ -17,6 +17,11 @@
 @property (strong, nonatomic) IBOutlet UIView *collectionView;
 // @property (strong, nonatomic) NSArray<UIImage *> *images;
 @property (strong, nonatomic) NSDictionary *images;
+@property (strong, nonatomic) NSMutableArray *people;
+@property (strong, nonatomic) NSMutableArray *location;
+@property (nonatomic, assign) BOOL segmentIsPeople;
+@property (weak, nonatomic) IBOutlet UICollectionView *theRealCollectionView;
+
 
 @end
 
@@ -30,6 +35,20 @@
     ImagesSetup *newSetup = [ImagesSetup new];
     self.images = [newSetup catagorize];
     
+    self.people = [NSMutableArray new];
+    self.location = [NSMutableArray new];
+    
+    [self.people addObject:[self.images valueForKey:@"Rick Photos"]];
+    [self.people addObject:[self.images valueForKey:@"Morty Photos"]];
+    [self.people addObject:[self.images valueForKey:@"Photos"]];
+    
+    [self.location addObject:[self.images valueForKey:@"Earth Photos"]];
+    [self.location addObject:[self.images valueForKey:@"Space Photos"]];
+
+    
+    NSLog(@"Number in ppl array %lu and %lu location array", ((unsigned long)self.people.count), (unsigned long)self.location.count);
+    
+    self.segmentIsPeople = YES;
 
 }
 
@@ -41,33 +60,64 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    NSArray *objArray = [self.images allKeys];
+//    NSArray *objArray = [self.images allKeys];
+//    
+//    return objArray.count;
     
-    return objArray.count;
+    if (self.segmentIsPeople) {
+        
+        NSArray *objArray = self.people;
+        return objArray.count;
+    } else {
+        
+        NSArray *objArray = self.location;
+        return objArray.count;
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSArray *objArray = [self.images allValues];
-    NSArray *imagesArray = objArray[section];
+//    NSArray *objArray = [self.images allValues];
+//    NSArray *imagesArray = objArray[section];
+//
+//    return imagesArray.count;
+    
+    
+    if (self.segmentIsPeople) {
+        
+        NSArray *objArray = self.people[section];
+        return objArray.count;
+    } else {
+        
+        NSArray *objArray = self.location[section];
+        return objArray.count;
+    }
 
-    return imagesArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     myCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myCollectionViewCell" forIndexPath:indexPath];
     
- 
-    NSArray *objArray = [self.images allValues];
-    
-    NSArray *imagesArray = objArray[indexPath.section];
-    
-    instaPhoto *imageToShow = [imagesArray objectAtIndex:indexPath.row];
-    
-//    instaPhoto *imageToShow = [instaPhoto new];
-//
-//    ImagesSetup *newSetup = [ImagesSetup new];
+// 
+//    NSArray *objArray = [self.images allValues];
 //    
+//    NSArray *imagesArray = objArray[indexPath.section];
+//    
+//    instaPhoto *imageToShow = [imagesArray objectAtIndex:indexPath.row];
+    
+
+    instaPhoto *imageToShow = [instaPhoto new];
+    
+    if (self.segmentIsPeople) {
+        
+        NSArray *objArray = self.people[indexPath.section];
+        imageToShow = [objArray objectAtIndex:indexPath.row];
+        
+    } else {
+        
+        NSArray *objArray = self.location[indexPath.section];
+        imageToShow = [objArray objectAtIndex:indexPath.row];
+    }
     
     
     cell.image.image = imageToShow.image;
@@ -79,17 +129,72 @@
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerView" forIndexPath:indexPath];
         
-        // NSString *subject = [self.subjects objectAtIndex:indexPath.section];
         
-        NSArray *subjects = [self.images allKeys];
-        NSString *subject = [subjects objectAtIndex:indexPath.section];
-//
+      //NSArray<NSString *> *subjects = [self.images allKeys];
+    
+        
+    
+        NSString *subject = [NSString new];
+        
+        
+        
+        if (self.segmentIsPeople) {
+            
+            
+            switch (indexPath.section) {
+                case 0:
+                    subject = @"Rick";
+                    break;
+                case 1:
+                    subject = @"Morty";
+                    break;
+                case 2:
+                    subject = @"Meeseeks";
+                    break;
+                case 3:
+                    subject = @"Testing";
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+        } else {
+            
+            switch (indexPath.section) {
+                case 0:
+                    subject = @"Earth";
+                    break;
+                case 1:
+                    subject = @"Space";
+                    break;
+              
+                    
+                default:
+                break;
+            }
+        }
+        
         headerView.sectionHeaderLabel.text = [NSString stringWithFormat:@"%@", subject];
-//        
-       // headerView.sectionLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+      
         return headerView;
     }
     return nil;
+}
+- (IBAction)segmentView:(UISegmentedControl *)sender {
+    
+   if ( sender.selectedSegmentIndex == 0)
+   {
+       self.segmentIsPeople = YES;
+       [self.theRealCollectionView reloadData];
+       NSLog(@"People Segment");
+   }
+    if ( sender.selectedSegmentIndex == 1){
+        self.segmentIsPeople = NO;
+        [self.theRealCollectionView reloadData];
+        NSLog(@"location Segment");
+
+    }
 }
 
 @end

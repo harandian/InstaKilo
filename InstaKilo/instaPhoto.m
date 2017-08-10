@@ -10,12 +10,13 @@
 
 @implementation instaPhoto
 
-- (instancetype)initWithCatagory:(NSString *)catagory andImage:(UIImage *)image
+- (instancetype)initWithCatagory:(NSString *)catagory andImage:(UIImage *)image andLocation:(NSString*) location
 {
     self = [super init];
     if (self) {
         _catagory = catagory;
         _image = image;
+        _location = location;
     }
     return self;
 }

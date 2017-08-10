@@ -40,25 +40,25 @@
 
 - (NSMutableDictionary *) catagorize {
     
-    instaPhoto *image1 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"Rick1"]];
+    instaPhoto *image1 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"Rick1"] andLocation:@"Earth"];
     
-    instaPhoto *image2 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick2"]];
+    instaPhoto *image2 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick2"] andLocation:@"Earth"];
     
-    instaPhoto *image3 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"Rick3"]];
+    instaPhoto *image3 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"Rick3"] andLocation:@"Space"];
     
-    instaPhoto *image4 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick4"]];
+    instaPhoto *image4 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick4"] andLocation:@"Earth"];
     
-    instaPhoto *image5 = [[instaPhoto alloc] initWithCatagory:@"Niether" andImage:[UIImage imageNamed:@"Rick5"]];
+    instaPhoto *image5 = [[instaPhoto alloc] initWithCatagory:@"Niether" andImage:[UIImage imageNamed:@"Rick5"] andLocation:@"Earth"];
     
-    instaPhoto *image6 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"Rick6"]];
+    instaPhoto *image6 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"Rick6"] andLocation:@"Space"];
     
-    instaPhoto *image7 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick7"]];
+    instaPhoto *image7 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick7"] andLocation:@"Earth"];
     
-    instaPhoto *image8 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick8"]];
+    instaPhoto *image8 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick8"] andLocation:@"Earth"];
     
-    instaPhoto *image9 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick9"]];
+    instaPhoto *image9 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick9"] andLocation:@"Space"];
     
-    instaPhoto *image10 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick10"]];
+    instaPhoto *image10 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick10"] andLocation:@"Space"];
     
     self.instaPhotosArray=@[
                        image1,
@@ -75,6 +75,8 @@
     NSMutableArray *rickArray = [NSMutableArray new];
     NSMutableArray *mortyArray = [NSMutableArray new];
     NSMutableArray *nietherArray = [NSMutableArray new];
+    NSMutableArray *earthArray = [NSMutableArray new];
+    NSMutableArray *spaceArray = [NSMutableArray new];
 
 
 
@@ -100,12 +102,32 @@
             [nietherArray addObject:image];
 
         }
+    }
+    
+    for (instaPhoto *image in self.instaPhotosArray) {
+
+        if ([image.location isEqualToString:@"Space"])
+            
+        {
+            [spaceArray addObject:image];
+            
+        }
         
+        else if ([image.location isEqualToString:@"Earth"])
+            
+        {
+            [earthArray addObject:image];
+            
+        }
+    }
         NSLog(@"Rick Array %li",(long)rickArray.count);
         NSLog(@"Morty Array %li",(long)mortyArray.count);
         NSLog(@"Niether Array %li",(long)nietherArray.count);
+        NSLog(@"Niether Array %li",(long)earthArray.count);
+        NSLog(@"Niether Array %li",(long)spaceArray.count);
 
-    }
+
+    
     
     
     self.instaPhotoDictionary = [NSMutableDictionary dictionary];
@@ -113,6 +135,12 @@
     [self.instaPhotoDictionary setObject:rickArray forKey:@"Rick Photos"];
     [self.instaPhotoDictionary setObject:mortyArray forKey:@"Morty Photos"];
     [self.instaPhotoDictionary setObject:nietherArray forKey:@"Photos"];
+    [self.instaPhotoDictionary setObject:spaceArray forKey:@"Space Photos"];
+    [self.instaPhotoDictionary setObject:earthArray forKey:@"Earth Photos"];
+    
+    
+
+
     
     NSLog(@"%li",(long)self.instaPhotoDictionary.count);
 
