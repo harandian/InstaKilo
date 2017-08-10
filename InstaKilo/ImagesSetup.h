@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "instaPhoto.h"
 
 @interface ImagesSetup : NSObject
 
-//@property (nonatomic) NSArray<UIImageView *> *images;
+@property (strong, nonatomic) NSArray<UIImage *> *images;
+@property UIImage *instaPhotos;
+@property NSSet *catagory;
+@property (strong, nonatomic) NSArray *instaPhotosArray;
+@property (strong, nonatomic) NSMutableDictionary *instaPhotoDictionary;
 
+- (NSArray <UIImage*>*) setupImages;
+- (NSMutableDictionary *) catagorize;
 
 @end

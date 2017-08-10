@@ -15,6 +15,8 @@
 		723F008F1F3B9C0F00215F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723F008D1F3B9C0F00215F7B /* LaunchScreen.storyboard */; };
 		723F00981F3BA73300215F7B /* myCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F00971F3BA73300215F7B /* myCollectionViewCell.m */; };
 		723F009B1F3BAD2D00215F7B /* ImagesSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F009A1F3BAD2D00215F7B /* ImagesSetup.m */; };
+		723F009E1F3BC3B800215F7B /* instaPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F009D1F3BC3B800215F7B /* instaPhoto.m */; };
+		723F00A11F3BE2E200215F7B /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F00A01F3BE2E200215F7B /* HeaderCollectionReusableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		723F00971F3BA73300215F7B /* myCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myCollectionViewCell.m; sourceTree = "<group>"; };
 		723F00991F3BAD2D00215F7B /* ImagesSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesSetup.h; sourceTree = "<group>"; };
 		723F009A1F3BAD2D00215F7B /* ImagesSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesSetup.m; sourceTree = "<group>"; };
+		723F009C1F3BC3B800215F7B /* instaPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = instaPhoto.h; sourceTree = "<group>"; };
+		723F009D1F3BC3B800215F7B /* instaPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = instaPhoto.m; sourceTree = "<group>"; };
+		723F009F1F3BE2E200215F7B /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		723F00A01F3BE2E200215F7B /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +76,11 @@
 				723F00861F3B9C0F00215F7B /* ViewController.m */,
 				723F00991F3BAD2D00215F7B /* ImagesSetup.h */,
 				723F009A1F3BAD2D00215F7B /* ImagesSetup.m */,
+				723F009C1F3BC3B800215F7B /* instaPhoto.h */,
+				723F009D1F3BC3B800215F7B /* instaPhoto.m */,
 				723F00881F3B9C0F00215F7B /* Main.storyboard */,
+				723F009F1F3BE2E200215F7B /* HeaderCollectionReusableView.h */,
+				723F00A01F3BE2E200215F7B /* HeaderCollectionReusableView.m */,
 				723F00961F3BA73300215F7B /* myCollectionViewCell.h */,
 				723F00971F3BA73300215F7B /* myCollectionViewCell.m */,
 				723F008B1F3B9C0F00215F7B /* Assets.xcassets */,
@@ -161,9 +171,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				723F00871F3B9C0F00215F7B /* ViewController.m in Sources */,
+				723F00A11F3BE2E200215F7B /* HeaderCollectionReusableView.m in Sources */,
 				723F00841F3B9C0F00215F7B /* AppDelegate.m in Sources */,
 				723F00981F3BA73300215F7B /* myCollectionViewCell.m in Sources */,
 				723F00811F3B9C0F00215F7B /* main.m in Sources */,
+				723F009E1F3BC3B800215F7B /* instaPhoto.m in Sources */,
 				723F009B1F3BAD2D00215F7B /* ImagesSetup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,11 +8,15 @@
 
 #import "ViewController.h"
 #import "myCollectionViewCell.h"
+#import "ImagesSetup.h"
+#import "instaPhoto.h"
+#import "HeaderCollectionReusableView.h"
 
 @interface ViewController () <UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *collectionView;
-@property (strong, nonatomic) NSArray<UIImage *> *images;
+// @property (strong, nonatomic) NSArray<UIImage *> *images;
+@property (strong, nonatomic) NSDictionary *images;
 
 @end
 
@@ -22,16 +26,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-     self.images=@[[UIImage imageNamed:@"Rick1"],
-                                 [UIImage imageNamed:@"Rick2"],
-                                 [UIImage imageNamed:@"Rick3"],
-                                 [UIImage imageNamed:@"Rick4"],
-                                 //[UIImage imageNamed:@"Rick5"],
-                                 [UIImage imageNamed:@"Rick6"],
-                                 [UIImage imageNamed:@"Rick7"],
-                                 [UIImage imageNamed:@"Rick8"],
-                                 [UIImage imageNamed:@"Rick9"],
-                                 [UIImage imageNamed:@"Rick10"]];
+
+    ImagesSetup *newSetup = [ImagesSetup new];
+    self.images = [newSetup catagorize];
+    
+
 }
 
 
@@ -41,32 +40,56 @@
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    
+    NSArray *objArray = [self.images allKeys];
+    
+    return objArray.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.images.count;
+    NSArray *objArray = [self.images allValues];
+    NSArray *imagesArray = objArray[section];
+
+    return imagesArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     myCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myCollectionViewCell" forIndexPath:indexPath];
     
-    UIImage *imageToShow = [self.images objectAtIndex:indexPath.row];
+ 
+    NSArray *objArray = [self.images allValues];
+    
+    NSArray *imagesArray = objArray[indexPath.section];
+    
+    instaPhoto *imageToShow = [imagesArray objectAtIndex:indexPath.row];
+    
+//    instaPhoto *imageToShow = [instaPhoto new];
+//
+//    ImagesSetup *newSetup = [ImagesSetup new];
+//    
     
     
-    cell.image.image = imageToShow;
+    cell.image.image = imageToShow.image;
     return cell;
 }
 
-//-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-//    
-//    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-//        HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerView" forIndexPath:indexPath];
-//        headerView.sectionLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
-//        return headerView;
-//    }
-//    return nil;
-//}
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerView" forIndexPath:indexPath];
+        
+        // NSString *subject = [self.subjects objectAtIndex:indexPath.section];
+        
+        NSArray *subjects = [self.images allKeys];
+        NSString *subject = [subjects objectAtIndex:indexPath.section];
+//
+        headerView.sectionHeaderLabel.text = [NSString stringWithFormat:@"%@", subject];
+//        
+       // headerView.sectionLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.section];
+        return headerView;
+    }
+    return nil;
+}
 
 @end

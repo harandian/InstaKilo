@@ -10,4 +10,10 @@
 
 @implementation myCollectionViewCell
 
+
+-(void) configureCellWithPhoto: (instaPhoto *) instaPhoto {
+    
+    self.image.image = instaPhoto.image;
+}
+
 @end

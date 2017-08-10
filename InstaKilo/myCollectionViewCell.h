@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "instaPhoto.h"
 
 @interface myCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property UILabel *label;
+-(void) configureCellWithPhoto: (instaPhoto *) instaPhoto;
 
 @end
