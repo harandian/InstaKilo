@@ -12,31 +12,24 @@
 
 
 
-- (NSArray <UIImage*>*) setupImages {
-    
-    self.images=@[[UIImage imageNamed:@"Rick1"],
-                  [UIImage imageNamed:@"Rick2"],
-                  [UIImage imageNamed:@"Rick3"],
-                  [UIImage imageNamed:@"Rick4"],
-                  [UIImage imageNamed:@"Rick5"],
-                  [UIImage imageNamed:@"Rick6"],
-                  [UIImage imageNamed:@"Rick7"],
-                  [UIImage imageNamed:@"Rick8"],
-                  [UIImage imageNamed:@"Rick9"],
-                  [UIImage imageNamed:@"Rick10"]];
-    
-    
-    return self.images;
-}
-
-
-
-//- (NSSet*) setCatagories {
-//    
-//    self.catagory = [NSSet setWithObjects:@"Rick",@"Morty",@"Both", nil];
-//    
-//    return self.catagory;
+//- (NSArray <UIImage*>*) setupImages {
+//
+//    self.images=@[[UIImage imageNamed:@"Rick1"],
+//                  [UIImage imageNamed:@"Rick2"],
+//                  [UIImage imageNamed:@"Rick3"],
+//                  [UIImage imageNamed:@"Rick4"],
+//                  [UIImage imageNamed:@"Rick5"],
+//                  [UIImage imageNamed:@"Rick6"],
+//                  [UIImage imageNamed:@"Rick7"],
+//                  [UIImage imageNamed:@"Rick8"],
+//                  [UIImage imageNamed:@"Rick9"],
+//                  [UIImage imageNamed:@"Rick10"]];
+//
+//
+//    return self.images;
 //}
+
+
 
 - (NSMutableDictionary *) catagorize {
     
@@ -60,31 +53,40 @@
     
     instaPhoto *image10 = [[instaPhoto alloc] initWithCatagory:@"Rick" andImage:[UIImage imageNamed:@"Rick10"] andLocation:@"Space"];
     
+    instaPhoto *image11 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"morty3"] andLocation:@"Space"];
+    
+    instaPhoto *image12 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"morty1"] andLocation:@"Space"];
+    
+    instaPhoto *image13 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"morty2"] andLocation:@"Space"];
+    
     self.instaPhotosArray=@[
-                       image1,
-                       image2,
-                       image3,
-                       image4,
-                       image5,
-                       image6,
-                       image7,
-                       image8,
-                       image9,
-                       image10];
+                            image1,
+                            image2,
+                            image3,
+                            image4,
+                            image5,
+                            image6,
+                            image7,
+                            image8,
+                            image9,
+                            image10,
+                            image11,
+                            image12,
+                            image13];
     
     NSMutableArray *rickArray = [NSMutableArray new];
     NSMutableArray *mortyArray = [NSMutableArray new];
     NSMutableArray *nietherArray = [NSMutableArray new];
     NSMutableArray *earthArray = [NSMutableArray new];
     NSMutableArray *spaceArray = [NSMutableArray new];
-
-
-
+    
+    
+    
     for (instaPhoto *image in self.instaPhotosArray) {
         
         if ([image.catagory isEqualToString:@"Rick"])
         {
-          
+            
             [rickArray addObject:image];
             
         }
@@ -93,19 +95,19 @@
         {
             
             [mortyArray addObject:image];
-
+            
         }
         
         else if ([image.catagory isEqualToString:@"Niether"])
-
+            
         {
             [nietherArray addObject:image];
-
+            
         }
     }
     
     for (instaPhoto *image in self.instaPhotosArray) {
-
+        
         if ([image.location isEqualToString:@"Space"])
             
         {
@@ -120,13 +122,13 @@
             
         }
     }
-        NSLog(@"Rick Array %li",(long)rickArray.count);
-        NSLog(@"Morty Array %li",(long)mortyArray.count);
-        NSLog(@"Niether Array %li",(long)nietherArray.count);
-        NSLog(@"Niether Array %li",(long)earthArray.count);
-        NSLog(@"Niether Array %li",(long)spaceArray.count);
-
-
+    NSLog(@"Rick Array %li",(long)rickArray.count);
+    NSLog(@"Morty Array %li",(long)mortyArray.count);
+    NSLog(@"Niether Array %li",(long)nietherArray.count);
+    NSLog(@"Niether Array %li",(long)earthArray.count);
+    NSLog(@"Niether Array %li",(long)spaceArray.count);
+    
+    
     
     
     
@@ -139,11 +141,11 @@
     [self.instaPhotoDictionary setObject:earthArray forKey:@"Earth Photos"];
     
     
-
-
+    
+    
     
     NSLog(@"%li",(long)self.instaPhotoDictionary.count);
-
+    
     return self.instaPhotoDictionary;
 }
 

@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSArray *instaPhotosArray;
 @property (strong, nonatomic) NSMutableDictionary *instaPhotoDictionary;
 
-- (NSArray <UIImage*>*) setupImages;
+//- (NSArray <UIImage*>*) setupImages;
 - (NSMutableDictionary *) catagorize;
 
 @end
