@@ -41,7 +41,6 @@
     [self.people addObject:[self.images valueForKey:@"Rick Photos"]];
     [self.people addObject:[self.images valueForKey:@"Morty Photos"]];
     [self.people addObject:[self.images valueForKey:@"Photos"]];
-    
     [self.location addObject:[self.images valueForKey:@"Earth Photos"]];
     [self.location addObject:[self.images valueForKey:@"Space Photos"]];
 
@@ -57,6 +56,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Setting the number of sections in the contentview
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -74,6 +75,8 @@
         return objArray.count;
     }
 }
+
+#pragma mark - Setting the number of items in the section
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 //    NSArray *objArray = [self.images allValues];
@@ -93,6 +96,8 @@
     }
 
 }
+
+#pragma mark - Setting the cell image
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -123,6 +128,8 @@
     cell.image.image = imageToShow.image;
     return cell;
 }
+
+#pragma mark - Setting the subjects
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     
@@ -181,6 +188,9 @@
     }
     return nil;
 }
+
+#pragma mark - Setting the segment button
+
 - (IBAction)segmentView:(UISegmentedControl *)sender {
     
    if ( sender.selectedSegmentIndex == 0)

@@ -29,7 +29,7 @@
 //    return self.images;
 //}
 
-
+#pragma mark - Initializing new instaPhotos
 
 - (NSMutableDictionary *) catagorize {
     
@@ -59,6 +59,8 @@
     
     instaPhoto *image13 = [[instaPhoto alloc] initWithCatagory:@"Morty" andImage:[UIImage imageNamed:@"morty2"] andLocation:@"Space"];
     
+#pragma mark - Sorting out the photos
+    
     self.instaPhotosArray=@[
                             image1,
                             image2,
@@ -86,23 +88,18 @@
         
         if ([image.catagory isEqualToString:@"Rick"])
         {
-            
             [rickArray addObject:image];
-            
         }
         
         else if ([image.catagory isEqualToString:@"Morty"])
         {
-            
             [mortyArray addObject:image];
-            
         }
         
         else if ([image.catagory isEqualToString:@"Niether"])
             
         {
             [nietherArray addObject:image];
-            
         }
     }
     
@@ -127,11 +124,7 @@
     NSLog(@"Niether Array %li",(long)nietherArray.count);
     NSLog(@"Niether Array %li",(long)earthArray.count);
     NSLog(@"Niether Array %li",(long)spaceArray.count);
-    
-    
-    
-    
-    
+
     self.instaPhotoDictionary = [NSMutableDictionary dictionary];
     
     [self.instaPhotoDictionary setObject:rickArray forKey:@"Rick Photos"];
@@ -139,11 +132,7 @@
     [self.instaPhotoDictionary setObject:nietherArray forKey:@"Photos"];
     [self.instaPhotoDictionary setObject:spaceArray forKey:@"Space Photos"];
     [self.instaPhotoDictionary setObject:earthArray forKey:@"Earth Photos"];
-    
-    
-    
-    
-    
+
     NSLog(@"%li",(long)self.instaPhotoDictionary.count);
     
     return self.instaPhotoDictionary;
